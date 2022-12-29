@@ -1,0 +1,11 @@
+{
+  "datasource": [
+    {
+      "driver": "com.mysql.jdbc.Driver",
+      "url": "jdbc:mysql://localhost:3306/artworks",
+      "database": "artists",
+      "username": "root",
+      "password": "1111"
+    }
+  ]
+}
