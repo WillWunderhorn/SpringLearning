@@ -4,25 +4,22 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.Period;
-
 
 @ToString
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Data
 @Table(name = "students")
 public class Student {
 
     @Id
-    @Column(name = "id", columnDefinition = "serial")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String name;
-
     private int age;
 
     @Column(nullable = false)
@@ -35,13 +32,5 @@ public class Student {
         this.name = name;
         this.email = email;
         this.date = date;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
