@@ -24,7 +24,6 @@ public class PersonConfig {
         Dog dog = new Dog();
         dog.setName("Wolfy");
         dog.setAge(5);
-        dog.makeSound();
         return dog;
     }
 
@@ -34,7 +33,6 @@ public class PersonConfig {
         Perrot perrot = new Perrot();
         perrot.setName("Perrot");
         perrot.setAge(2);
-        perrot.makeSound();
         return perrot;
     }
 

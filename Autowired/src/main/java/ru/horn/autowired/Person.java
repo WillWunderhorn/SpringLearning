@@ -13,6 +13,9 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class Person {
     String name;
+
+    @Qualifier("getDog")
+    @Autowired
     Pet pet;
 
     @Override

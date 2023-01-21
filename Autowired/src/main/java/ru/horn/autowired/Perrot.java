@@ -15,16 +15,6 @@ public class Perrot implements Pet {
     int age;
 
     @Override
-    public void makeSound() {
-        System.out.println("Squick!");
-    }
-
-    @Override
-    public void showName() {
-        System.out.println(name);
-    }
-
-    @Override
     public String toString() {
         return  "Pet's name: " + name + "\n" +
                 "Age: " + age;

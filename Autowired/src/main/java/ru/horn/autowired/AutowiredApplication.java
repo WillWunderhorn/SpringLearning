@@ -15,9 +15,6 @@ public class AutowiredApplication {
 
         Person person = ctx.getBean("getPerson", Person.class);
 
-        Pet pet = ctx.getBean("getDog", Pet.class);
-
-        person.setPet(pet);
 
         System.out.println(person);
 
