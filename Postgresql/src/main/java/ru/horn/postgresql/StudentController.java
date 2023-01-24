@@ -18,7 +18,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/get")
+    @GetMapping("/")
     public List<Student> getAllStudents() {
         return studentService.findAll();
     }

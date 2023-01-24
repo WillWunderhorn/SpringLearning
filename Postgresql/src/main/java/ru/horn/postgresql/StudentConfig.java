@@ -3,18 +3,21 @@ package ru.horn.postgresql;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.jdbc.JdbcTestUtils;
 
 import java.time.LocalDate;
-import java.time.Month;
 
 import static java.util.Calendar.MARCH;
 
 @Configuration
 public class StudentConfig {
     private final StudentRepo studentRepo;
+    private final JdbcTemplate jdbcTemplate;
 
-    public StudentConfig(StudentRepo studentRepo) {
+    public StudentConfig(StudentRepo studentRepo, JdbcTemplate jdbcTemplate) {
         this.studentRepo = studentRepo;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Bean
@@ -27,5 +30,9 @@ public class StudentConfig {
             );
             studentRepo.save(maria);
         };
+    }
+    @Bean
+    public void autoTruncate() {
+        JdbcTestUtils.deleteFromTables(jdbcTemplate, "students");
     }
 }

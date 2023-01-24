@@ -1,65 +1,33 @@
 package ru.horn.bean;
 
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
-@Service
+@Component
 public class StudentService {
+    StudentRepository studentRepository;
 
-    private final StudentRepository studentRepository;
-
-    @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudents() {
+    public List<Student> findAll(){
         return studentRepository.findAll();
     }
 
-    public void addNewStudent(Student student) {
-        Optional<Student> StudentOptional = studentRepository
-                .findStudentByEmail(student.getEmail());
-        if (StudentOptional.isPresent()) {
-            throw new IllegalStateException("email taken");
-        }
+    public List<Student> addStudent(Student student){
         studentRepository.save(student);
+        return studentRepository.findAll();
     }
 
-    public void deleteStudent(Long studentId) {
-        studentRepository.findById(studentId);
-        boolean exists = studentRepository.existsById(studentId);
-
-        if (!exists) {
-            throw new IllegalStateException("student with " + studentId + " does not exists");
-        }
-        studentRepository.deleteById(studentId);
+    public List<Student> removeStudent(Long id){
+        studentRepository.deleteById(id);
+        return studentRepository.findAll();
     }
 
-    @Transactional
-    public void updateStudent(Long studentId, String name, String email) {
-        Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new IllegalStateException("student with " + studentId + " does not exists"));
-        if (name != null &&
-                name.length() > 0 &&
-                !Objects.equals(student.getName(), name)) {
-            student.setName(name);
-        }
-
-        if (email != null &&
-                email.length() > 0 &&
-                !Objects.equals(student.getEmail(), email)) {
-            Optional<Student> studentOptional = studentRepository
-                    .findStudentByEmail(email);
-            if (studentOptional.isPresent()) {
-                throw new IllegalStateException("email taken");
-            }
-            student.setEmail(email);
-        }
+    public List<Student> removeAllStudents(){
+        studentRepository.deleteAll();
+        return studentRepository.findAll();
     }
 }
