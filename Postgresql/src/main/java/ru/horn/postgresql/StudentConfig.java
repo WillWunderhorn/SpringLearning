@@ -31,8 +31,8 @@ public class StudentConfig {
             studentRepo.save(maria);
         };
     }
-    @Bean
-    public void autoTruncate() {
-        JdbcTestUtils.deleteFromTables(jdbcTemplate, "students");
-    }
+//    @Bean
+//    public void autoTruncate() {
+//        JdbcTestUtils.deleteFromTables(jdbcTemplate, "students");
+//    }
 }

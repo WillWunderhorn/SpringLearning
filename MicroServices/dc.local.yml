@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    container_name: library
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  consul:
+    image: consul
+    container_name: consul
+    restart: always
+    ports:
+      - "8500:8500"
+    command: "consul agent -server -ui -client=0.0.0.0 -data-dir=/consul/data -bootstrap -bootstrap-expect=1"
