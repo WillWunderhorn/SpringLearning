@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+
+
 @Service
 public class StudentService {
     StudentRepo studentRepo;
@@ -27,6 +29,7 @@ public class StudentService {
         if (studentOptional.isPresent()){
             throw new IllegalStateException("EMAIL IS TAKEN!");
         }
+        student.setAge(student.getAge());
         studentRepo.save(student);
         return studentRepo.findAll();
     }

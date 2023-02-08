@@ -1,5 +1,6 @@
 package ru.horn.postgresql;
 
+import org.hibernate.sql.ast.tree.expression.SqlTuple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public List<Student> addNewStudent(@RequestBody Student student) {
         studentService.addNew(student);
         return studentRepo.findAll();
@@ -46,11 +47,12 @@ public class StudentController {
     @PutMapping(path = "{id}")
     public List<Student> changeStudent(
             @PathVariable("id") Long id,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) LocalDate date
+//            @RequestParam(required = false) String name, <- это мусор
+//            @RequestParam(required = false) String email, <- это тоже мусор
+//            @RequestParam(required = false) LocalDate date <- и это тоже мусор
+            @RequestBody Student student
     ) {
-        studentService.updateStudent(id, name, email, date);
+        studentService.updateStudent(id, student.name, student.email, student.date);
         return studentRepo.findAll();
     }
 }

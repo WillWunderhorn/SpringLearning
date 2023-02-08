@@ -1,0 +1,13 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: author
+  config:
+    import: application.yml
+  cloud:
+    consul:
+      config:
+        enabled: false
+      discovery:
+        enabled: false

@@ -1,7 +1,6 @@
 package ru.horn.postgresql;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,7 +10,6 @@ import java.time.Period;
 
 @Table(name = "students")
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @ToString
@@ -22,13 +20,19 @@ public class Student {
     Long id;
 
     String name;
-    @javax.persistence.Transient
     int age;
     String email;
     LocalDate date;
 
     public Student(String name, String email, LocalDate date) {
         this.name = name;
+        this.email = email;
+        this.date = date;
+    }
+
+    public Student(String name, int age, String email, LocalDate date) {
+        this.name = name;
+        this.age = age;
         this.email = email;
         this.date = date;
     }
@@ -41,7 +45,7 @@ public class Student {
         return name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return Period.between(this.date, LocalDate.now()).getYears();
     }
 
@@ -51,5 +55,13 @@ public class Student {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

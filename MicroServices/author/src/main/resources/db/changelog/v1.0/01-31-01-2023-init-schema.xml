@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="init-author-schema" author="horn">
+        <createTable tableName="author">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true" primaryKeyName="pk_author_id" nullable="false"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false" notNullConstraintName="nn_author_name"/>
+            </column>
+            <column name="surname" type="text">
+                <constraints nullable="false" notNullConstraintName="nn_author_surname"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="seq_author_id"
+                        cycle="false"
+                        startValue="1"
+                        incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="test-data" author="horn" contextFilter="test">
+        <insert tableName="author">
+            <column name="id" value="1"/>
+            <column name="name" value="name"/>
+            <column name="surname" value="surname"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
