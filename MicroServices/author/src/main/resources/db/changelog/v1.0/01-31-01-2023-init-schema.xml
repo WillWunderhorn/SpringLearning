@@ -23,11 +23,11 @@
                         incrementBy="1"/>
     </changeSet>
 
-    <changeSet id="test-data" author="horn" contextFilter="test">
+    <changeSet id="test-data" author="vdsimako" context="test">
         <insert tableName="author">
-            <column name="id" value="1"/>
-            <column name="name" value="name"/>
-            <column name="surname" value="surname"/>
+            <column name="id" valueSequenceNext="seq_author_id"/>
+            <column name="name" value="name_test"/>
+            <column name="surname" value="surname_test"/>
         </insert>
     </changeSet>
 

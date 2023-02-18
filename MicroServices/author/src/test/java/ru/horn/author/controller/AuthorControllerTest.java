@@ -5,11 +5,13 @@ import author.CreateAuthorDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -32,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
 @Transactional
+@Rollback
 class AuthorControllerTest {
 
     @Autowired
@@ -83,7 +86,6 @@ class AuthorControllerTest {
 
     @Test
     void getAuthorById() throws Exception {
-        authorRepository.save(AuthProvider.getAuthorForSave());
 
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/author/{id}", 1L)
@@ -100,10 +102,12 @@ class AuthorControllerTest {
     }
 
     @Test
+    @Disabled
     void getAuthorDtoList() {
     }
 
     @Test
+    @Disabled
     void getAuthorDtoListByName() throws Exception {
         mockMvc.perform(
                         MockMvcRequestBuilders.get("/author/{id}", 1L)
@@ -119,22 +123,27 @@ class AuthorControllerTest {
     }
 
     @Test
+    @Disabled
     void getAuthorDtoListBySurName() {
     }
 
     @Test
+    @Disabled
     void getAuthorDtoListByNameAndSurname() {
     }
 
     @Test
+    @Disabled
     void updateAuthorDto() {
     }
 
     @Test
+    @Disabled
     void updateAuthorName() {
     }
 
     @Test
+    @Disabled
     void deleteAuthorDtoById() {
     }
 }

@@ -1,0 +1,11 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <include file="create-students-tableV1.xml" relativeToChangelogFile="true"/>
+    <include file="insert-into-students-table.xml" relativeToChangelogFile="true"/>
+    <include file="create-friends-tableV1.xml" relativeToChangelogFile="true"/>
+    <include file="insert-into-friends-table.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

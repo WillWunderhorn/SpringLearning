@@ -22,19 +22,19 @@ public class Student {
     String name;
     int age;
     String email;
-    LocalDate date;
+    LocalDate date_of_birth;
 
-    public Student(String name, String email, LocalDate date) {
+    public Student(String name, String email, LocalDate date_of_birth) {
         this.name = name;
         this.email = email;
-        this.date = date;
+        this.date_of_birth = date_of_birth;
     }
 
-    public Student(String name, int age, String email, LocalDate date) {
+    public Student(String name, int age, String email, LocalDate date_of_birth) {
         this.name = name;
         this.age = age;
         this.email = email;
-        this.date = date;
+        this.date_of_birth = date_of_birth;
     }
 
     public Long getId() {
@@ -46,22 +46,22 @@ public class Student {
     }
 
     public Integer getAge() {
-        return Period.between(this.date, LocalDate.now()).getYears();
+        return Period.between(this.date_of_birth, LocalDate.now()).getYears();
     }
 
     public String getEmail() {
         return email;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDate(LocalDate date_of_birth) {
+        this.date_of_birth = date_of_birth;
     }
 }

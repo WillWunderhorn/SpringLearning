@@ -52,7 +52,7 @@ public class StudentController {
 //            @RequestParam(required = false) LocalDate date <- и это тоже мусор
             @RequestBody Student student
     ) {
-        studentService.updateStudent(id, student.name, student.email, student.date);
+        studentService.updateStudent(id, student.name, student.email, student.date_of_birth);
         return studentRepo.findAll();
     }
 }

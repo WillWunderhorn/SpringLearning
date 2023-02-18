@@ -1,7 +1,11 @@
 package author;
 
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
@@ -17,4 +21,5 @@ public class AuthorDto {
 
     @NotEmpty
     private String surname;
+
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="init-book-schema" author="horn">
+        <createTable tableName="book">
+            <column name="id" type="bigserial" autoIncrement="false">
+                <constraints primaryKey="true" primaryKeyName="pk_book_id" nullable="false" />
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false" notNullConstraintName="nn_book_name"/>
+            </column>
+            <column name="desc" type="text"/>
+            <column name="price" type="bigint">
+                <constraints nullable="false" notNullConstraintName="nn_book_price"/>
+            </column>
+            <column name="issue_date" type="timestamp"/>
+            <column name="author_id" type="bigserial" autoIncrement="false">
+                <constraints nullable="false" notNullConstraintName="nn_book_author_id"/>
+            </column>
+        </createTable>
+
+        <createSequence sequenceName="seq_book_id"
+                        cycle="false"
+                        startValue="1"
+                        incrementBy="1"/>
+    </changeSet>
+
+<!--    <changeSet id="test-data" author="horn" context="test">-->
+<!--        <insert tableName="book">-->
+<!--            <column name="id" valueSequenceNext="seq_book_id"/>-->
+<!--            <column name="name" value="novel"/>-->
+<!--            <column name="desc" value="novel desc"/>-->
+<!--            <column name="price" value="2500"/>-->
+<!--            <column name="issueDate" value="2500"/>-->
+<!--        </insert>-->
+<!--    </changeSet>-->
+
+</databaseChangeLog>

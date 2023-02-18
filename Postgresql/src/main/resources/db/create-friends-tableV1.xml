@@ -1,0 +1,27 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="create-friends-table" author="horn">
+        <sql>DROP TABLE IF EXISTS friends</sql>
+        <createTable tableName="friends">
+
+            <column name="friend_id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="friend_name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            
+        </createTable>
+        
+        <addForeignKeyConstraint baseTableName="students"
+                                 baseColumnNames="friend_id"
+                                 constraintName="fk_friend_id"
+                                 referencedTableName="friends"
+                                 referencedColumnNames="friend_id"/>
+    </changeSet>
+
+</databaseChangeLog>

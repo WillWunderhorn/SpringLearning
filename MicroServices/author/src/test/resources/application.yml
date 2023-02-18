@@ -5,6 +5,8 @@ spring:
     name: author
   config:
     import: application.yml
+  liquibase:
+    contexts: test
   cloud:
     consul:
       config:

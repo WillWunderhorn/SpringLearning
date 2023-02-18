@@ -1,0 +1,17 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="insert-into-students-table" author="horn">
+
+        <insert tableName="students">
+            <column name="name" value="Jeremiah"/>
+            <column name="age" valueComputed="(SELECT date_part('year', age('2000-05-03'::date)))"/>
+            <column name="email" value="jeremiah@mail.com"/>
+            <column name="date_of_birth" value="2000-05-03"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

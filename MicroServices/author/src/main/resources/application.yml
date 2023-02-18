@@ -1,5 +1,6 @@
 server:
   port: 7000
+
 spring:
   main:
     banner-mode: off
@@ -14,7 +15,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: ["*"]
+        include: [ "*" ]
 ---
 spring:
   config:
@@ -23,9 +24,10 @@ spring:
     import: "optional:consul:"
   liquibase:
     drop-first: true
+    contexts: ${spring.profiles.active}
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/microservices
+    url: jdbc:postgresql://localhost:5432/author
     username: postgres
     password: 1111
 ---
@@ -41,3 +43,5 @@ spring:
       config:
         format: yaml
         data-key: config
+  liquibase:
+    contexts: ${spring.profiles.active}

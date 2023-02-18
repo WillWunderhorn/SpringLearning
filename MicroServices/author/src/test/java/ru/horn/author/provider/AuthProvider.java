@@ -6,6 +6,8 @@ import ru.horn.author.model.entity.Author;
 
 public class AuthProvider {
 
+    public static final Long USER_ID = 2L;
+
     public static CreateAuthorDto getCreateAuthorDto() {
         CreateAuthorDto createAuthorDto = CreateAuthorDto.builder()
                 .name("name")
@@ -25,7 +27,7 @@ public class AuthProvider {
 
     public static Author getAuthor() {
         Author author = Author.builder()
-                .id(1L)
+                .id(USER_ID)
                 .name("name")
                 .surname("surname")
                 .build();
@@ -34,7 +36,7 @@ public class AuthProvider {
 
     public static AuthorDto getAuthorDto() {
         return AuthorDto.builder()
-                .id(1L)
+                .id(USER_ID)
                 .name("name")
                 .surname("surname")
                 .build();

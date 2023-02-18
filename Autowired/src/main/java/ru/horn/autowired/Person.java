@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Person {
     String name;
 
-    @Qualifier("getDog")
+    @Qualifier("getPerrot")
     @Autowired
     Pet pet;
 

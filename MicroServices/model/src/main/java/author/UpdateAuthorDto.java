@@ -11,9 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UpdateAuthorDto {
-
-    private Long id;
-
     @NotEmpty
     private String name;
 

@@ -19,4 +19,9 @@ public class Perrot implements Pet {
         return  "Pet's name: " + name + "\n" +
                 "Age: " + age;
     }
+
+    @Override
+    public void makeSound() {
+        System.out.println("Squick");
+    }
 }

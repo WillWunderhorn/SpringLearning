@@ -1,0 +1,37 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd">
+
+    <changeSet id="create-students-table" author="horn">
+        <sql>DROP TABLE IF EXISTS students</sql>
+        <createTable tableName="students">
+
+            <column name="id" autoIncrement="true" type="bigserial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="age" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="friend_id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

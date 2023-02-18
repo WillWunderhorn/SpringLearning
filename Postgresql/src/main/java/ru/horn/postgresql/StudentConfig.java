@@ -37,8 +37,8 @@ public class StudentConfig {
 //        };
 //    }
 
-    @Bean
-    public void autoTruncate() {
-        JdbcTestUtils.deleteFromTables(jdbcTemplate, "students");
-    }
+//    @Bean
+//    public void autoTruncate() {
+//        JdbcTestUtils.deleteFromTables(jdbcTemplate, "students");
+//    }
 }

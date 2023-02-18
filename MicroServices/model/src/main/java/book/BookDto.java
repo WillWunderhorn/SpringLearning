@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
@@ -19,14 +19,19 @@ import java.time.ZonedDateTime;
 @Builder
 public class BookDto {
     private Long id;
+
+    @NotEmpty
+    private String name;
+
     @NotEmpty
     private String desc;
+
     @NotNull
     @Positive
     private BigDecimal price;
+
     @NotNull
     @PastOrPresent
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "UTC")
-    private ZonedDateTime issueDate;
-
+    private Instant issueDate;
 }
